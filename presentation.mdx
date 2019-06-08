@@ -1,0 +1,140 @@
+import { SplitRight } from 'mdx-deck/layouts'
+import { aspect } from 'mdx-deck/themes'
+import highlight from '@mdx-deck/themes/syntax-highlighter-prism'
+
+export const themes = [ aspect, highlight ]
+
+# Why 1.0 on Kaggle?
+## Kaggleで1.0の結果になったの理由は何でしょう。
+
+---
+
+# These slides are at Connpass. So you can check them out.
+## スライドはConnpassにアップされています。 是非みてください。
+
+---
+
+<SplitRight>
+
+<img src={require("file-loader!./assets/arex.jpg")} />
+
+# I'm "globophobe" on Connpass.
+## Connpassのユーザ名は「globophobe」です。
+
+</SplitRight>
+
+---
+# Recently, I finished Fast.ai lesson 3.
+## 最近、私はFast.aiのレッスン3を終えました。
+
+---
+
+# Fast.ai is a free deep learning curriculum.
+## 無料機械学習カリキュラムです。
+
+---
+
+<SplitRight>
+
+<img src={require("file-loader!./assets/jeremy-howard.png")} />
+
+# The teacher was Kaggle #1, and its president. 
+## 先生はKaggleの１位、そしてKaggleの組織の会長でした。
+
+</SplitRight>
+
+---
+
+# Lesson 1 and 2 briefly explained how to create a CNN with ResNet for transfer learning.
+## レッスン1と2は、簡単に転送学習ト用のResNetを使用してCNNを作成方法を説明しました。
+
+---
+
+# Lesson 3 explains in more detail how to use the Fast.ai library.
+## レッスン3では、Fast.aiライブラリの使用方法についてさらに詳しく説明します。
+
+---
+
+# The teacher starts with a Kaggle competition.
+## 先生はKaggleコンテストから始まります。
+
+---
+
+<img src={require("file-loader!./assets/planet-amazon.png")} />
+
+# Planet: Understanding the Amazon from Space
+## 地球：宇宙からはアマゾンを理解する
+
+---
+
+<SplitRight>
+
+<img src={require("file-loader!./assets/planet-amazon-example.png")} />
+
+# Data is multilabel satellite images.
+## データはマルチラベル衛星画像です。
+
+</SplitRight>
+
+---
+
+# How to use the Fast.ai data block API to create the CNN is explained.
+## Fast.aiデータブロックAPIを使用してCNNを作成する方法について説明されています。
+
+---
+
+# Where is the data? データはどこ?
+
+```python
+src = (ImageFileList.from_folder(path)            
+       .label_from_csv(
+          'train_v2.csv', 
+          sep=' ',
+          folder='train-jpg',suffix='.jpg'
+        )
+       .random_split_by_pct(0.2))
+```
+
+---
+
+# How to augment? 増強する方法？
+
+```python
+tfms = get_transforms(
+  flip_vert=True,                                 
+  max_lighting=0.1, 
+  max_zoom=1.05, 
+  max_warp=0.
+)
+```
+
+---
+
+# Create Fast.ai DataBunch.
+## Fast.ai DataBunchを作成します。
+
+```python
+data = (src.datasets()                            
+        .transform(tfms, size=128)
+        .databunch().normalize(imagenet_stats))
+```
+
+---
+
+# DataBunch is train, validation, and optionally test PyTorch DataLoaders.
+## DataBunchはPyTorch DataLoaderの束です。トレーニング、検証、そしてオプションでテストデータです。
+
+---
+
+# I wanted to practice, so I thought I would try a contest on Kaggle.
+## 練習したかったので、Kaggleでコンテストをしようと思いました。
+
+---
+
+<img src={require("file-loader!./assets/aerial-cactus.png")} />
+
+# Aerial Cactus Identification
+## 空中サボテンの同定
+
+
+

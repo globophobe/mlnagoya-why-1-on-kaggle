@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "start": "mdx-deck presentation.mdx"
+  },
+  "devDependencies": {
+    "file-loader": "^4.0.0",
+    "mdx-deck": "^2.3.2"
+  },
+  "dependencies": {}
+}
