@@ -55,7 +55,7 @@ export const themes = [ aspect, highlight ]
 
 ---
 
-# The teacher starts with a Kaggle competition.
+# The teacher starts with a Kaggle contest.
 ## 先生はKaggleコンテストから始まります。
 
 ---
@@ -97,7 +97,7 @@ src = (ImageFileList.from_folder(path)
 
 ---
 
-# How to augment? 増強する方法？
+# How to augment? データ増強方法？
 
 ```python
 tfms = get_transforms(
@@ -126,8 +126,46 @@ data = (src.datasets()
 
 ---
 
-# I wanted to practice, so I thought I would try a contest on Kaggle.
-## 練習したかったので、Kaggleでコンテストをしようと思いました。
+# After 5 epochs, about top 50 on Kaggle. トップ50位ぐらいでした。
+
+```python
+lr = 0.01
+learn.fit_one_cycle(5, slice(lr))
+Total time: 04:17
+epoch  train_loss  valid_loss  accuracy_t  fbeta   
+1      0.115247    0.103319    0.950703    0.910291
+...    ...         ...         ...         ...
+5      0.091275    0.085441    0.958006    0.926234
+```
+
+---
+
+# Interesting point, Planet data is 256x256, but he resized to 128x128. 
+## 興味深い点は、データは256 x 256ですけれど、128 x 128にサイズが変更されました。
+
+---
+
+# He made a new dataset at 256x256, and continued training with his pretrained model.
+## 最終に、256 x 256の新しいデータセットを作って、そのデータで128 x 128訓練されたモデルの訓練を続けました。
+
+
+---
+
+# In the end, about top 25 on Kaggle. 
+## ついに、教師はトップ25位ぐらいでした。
+
+```python
+Total time: 18:23
+epoch  train_loss  valid_loss  accuracy_t  fbeta   
+1      0.083591    0.082895    0.968310    0.928210
+...    ...         ...         ...         ...
+5      0.074927    0.080691    0.968819    0.931414
+```
+
+---
+
+# I wanted to practice, so I thought I would try a Kaggle contest for the first time.
+## 練習したかったので、Kaggleコンテスト初めてしようと思いました。
 
 ---
 
@@ -136,5 +174,95 @@ data = (src.datasets()
 # Aerial Cactus Identification
 ## 空中サボテンの同定
 
+---
 
+# However, the Fast.ai fam was already there.
+## しかし、Fast.aiの生徒はすでに集まっていました。 
 
+---
+
+# From the forum, "Why are people using Fast.ai getting 1.0 score?"
+## フォーラムで、Fast.aiを使用している人はなぜ1.0スコアを得ているのですか。
+
+<img src={require("file-loader!./assets/why-1.png")} />
+
+---
+
+# One comment, "Because of the transforms, including warping."
+## 1つのコメントは「ワープを含むデータ増強方法のデフォルトは良いから。」
+
+<img src={require("file-loader!./assets/bc-transforms.png")} />
+
+---
+
+# In any case, I added my name to the leaderboard.
+## いずれに、リーダーボードに自分の名前を追加しました。
+
+<img src={require("file-loader!./assets/1.png")} />
+
+---
+
+# I think maybe many 1.0 scores using Fast.ai were based on a freeCodeCamp article.
+## Fast.aiを使った多くの1.0スコアが多分freeCodeCampの記事に基づいていたと思います。
+
+---
+
+# Public kernel data augmentation:
+## 公開カーネルはこれをデータ増強のため：
+
+```python
+transformations = get_transforms(
+	do_flip=True, flip_vert=True, max_rotate=10.0,
+	max_zoom=1.1, max_lighting=0.2, max_warp=0.2,
+	p_affine=0.75, p_lighting=0.75
+)
+```
+
+---
+
+# However, they are almost all default params.
+## ただし、それらはほとんどFast.aiのデフォルトパラメータです。
+
+---
+
+# This is all you need.
+## これだけで十分です。
+
+```python
+transformations = get_transforms(do_flip=True)    
+```
+
+---
+
+# That was enough for a 0.9999 score.
+## それは0.9999のスコアのためは十分でした。
+
+---
+
+<SplitRight>
+
+# For 1.0 solution, correct imbalanced classes.
+## 1.0の解決策は、不均衡なクラスを修正することでした。
+
+</SplitRight>
+
+---
+
+# Well, wait and see what happens on the private leaderboard.
+## プライベートリーダーボードで何が起こるのを待つ事がお楽しみに。
+
+---
+
+# Anyway, I think it was a good first experience with Kaggle.
+## 私の最初のKaggleの経験は良かったと思います。
+
+---
+
+# To close, a response to the "why 1.0?" question, "Perhaps it's not such a prickly problem after all."
+## 「なぜ1.0」に対応のコメントは「おそらく空中サボテンの同定はそなに難しくない問題ではない。」
+
+<img src={require("file-loader!./assets/not-prickly-problem.png")} />
+
+---
+# That’s all. Thanks for listening.
+## 以上です。ご清聴ありがとうございます。
