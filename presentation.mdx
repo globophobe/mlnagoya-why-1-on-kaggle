@@ -5,7 +5,7 @@ import highlight from '@mdx-deck/themes/syntax-highlighter-prism'
 export const themes = [ aspect, highlight ]
 
 # Why 1.0 on Kaggle?
-## Kaggleで1.0の結果になったの理由は何でしょう。
+## Kaggleで1.0になったの理由は？
 
 ---
 
@@ -18,14 +18,14 @@ export const themes = [ aspect, highlight ]
 
 <img src={require("file-loader!./assets/arex.jpg")} />
 
-# I'm "globophobe" on Connpass.
+# My username on Connpass is "globophobe".
 ## Connpassのユーザ名は「globophobe」です。
 
 </SplitRight>
 
 ---
-# Recently, I finished Fast.ai lesson 3.
-## 最近、私はFast.aiのレッスン3を終えました。
+# A little while ago, I finished Fast.ai lesson 3.
+## 少し前、Fast.aiレッスン3を終えました。
 
 ---
 
@@ -45,8 +45,8 @@ export const themes = [ aspect, highlight ]
 
 ---
 
-# Lesson 1 and 2 briefly explained how to create a CNN with ResNet for transfer learning.
-## レッスン1と2は、簡単に転送学習ト用のResNetを使用してCNNを作成方法を説明しました。
+# Lesson 1 and 2 briefly explain how to create a CNN with ResNet for transfer learning.
+## レッスン1と2は、簡単に転送学習ト用のResNetを使用してCNNを作成方法を説明します。
 
 ---
 
@@ -78,7 +78,7 @@ export const themes = [ aspect, highlight ]
 
 ---
 
-# How to use the Fast.ai data block API to create the CNN is explained.
+# How to use the Fast.ai data block API to create a CNN is explained.
 ## Fast.aiデータブロックAPIを使用してCNNを作成する方法について説明されています。
 
 ---
@@ -92,7 +92,7 @@ src = (ImageFileList.from_folder(path)
           sep=' ',
           folder='train-jpg',suffix='.jpg'
         )
-       .random_split_by_pct(0.2))
+       .random_split_by_pct())
 ```
 
 ---
@@ -110,13 +110,15 @@ tfms = get_transforms(
 
 ---
 
-# Create Fast.ai DataBunch.
-## Fast.ai DataBunchを作成します。
+# Create Fast.ai DataBunch instance.
+## Fast.ai DataBunchのインスタンスを作成します。
 
 ```python
-data = (src.datasets()                            
-        .transform(tfms, size=128)
-        .databunch().normalize(imagenet_stats))
+data = (
+  src.datasets()                                  
+  .transform(tfms, size=128)
+  .databunch().normalize(imagenet_stats)
+)
 ```
 
 ---
@@ -129,8 +131,7 @@ data = (src.datasets()
 # After 5 epochs, about top 50 on Kaggle. トップ50位ぐらいでした。
 
 ```python
-lr = 0.01
-learn.fit_one_cycle(5, slice(lr))
+learn.fit_one_cycle(5, slice(0.01))
 Total time: 04:17
 epoch  train_loss  valid_loss  accuracy_t  fbeta   
 1      0.115247    0.103319    0.950703    0.910291
@@ -145,14 +146,14 @@ epoch  train_loss  valid_loss  accuracy_t  fbeta
 
 ---
 
-# He made a new dataset at 256x256, and continued training with his pretrained model.
-## 最終に、256 x 256の新しいデータセットを作って、そのデータで128 x 128訓練されたモデルの訓練を続けました。
+# Then, he made a new dataset at 256x256, and continued training with his pretrained model.
+## そして、256 x 256の新しいデータセットを作って、そのデータで128 x 128訓練されたモデルの訓練を続けました。
 
 
 ---
 
 # In the end, about top 25 on Kaggle. 
-## ついに、教師はトップ25位ぐらいでした。
+## 最終に、教師はトップ25位ぐらいでした。
 
 ```python
 Total time: 18:23
@@ -165,7 +166,7 @@ epoch  train_loss  valid_loss  accuracy_t  fbeta
 ---
 
 # I wanted to practice, so I thought I would try a Kaggle contest for the first time.
-## 練習したかったので、Kaggleコンテスト初めてしようと思いました。
+## 練習したかったので、Kaggleコンテストを初めてしようと思いました。
 
 ---
 
@@ -196,7 +197,7 @@ epoch  train_loss  valid_loss  accuracy_t  fbeta
 ---
 
 # In any case, I added my name to the leaderboard.
-## いずれに、リーダーボードに自分の名前を追加しました。
+## リーダーボードに自分の名前を追加しました。
 
 <img src={require("file-loader!./assets/1.png")} />
 
@@ -207,8 +208,12 @@ epoch  train_loss  valid_loss  accuracy_t  fbeta
 
 ---
 
-# Public kernel data augmentation:
-## 公開カーネルはこれをデータ増強のため：
+# Because the 1.0 scores had the same data augmentation parameters.
+## 1.0のスコアのデータ増強のパラメータは同じでしたから。
+---
+
+# 1.0 public kernel augmentation:
+## 1.0の公開カーネルはこれをデータ増強のため：
 
 ```python
 transformations = get_transforms(
@@ -220,8 +225,8 @@ transformations = get_transforms(
 
 ---
 
-# However, they are almost all default params.
-## ただし、それらはほとんどFast.aiのデフォルトパラメータです。
+# Except for one parameter, they are all default parameters.
+## 1つを除いて、すべてのパラメータはFast.aiのデフォルトのパラメータです。
 
 ---
 
@@ -239,29 +244,25 @@ transformations = get_transforms(do_flip=True)
 
 ---
 
-<SplitRight>
-
-# For 1.0 solution, correct imbalanced classes.
+# The solution for 1.0 was to correct imbalanced classes.
 ## 1.0の解決策は、不均衡なクラスを修正することでした。
 
-</SplitRight>
+---
+
+# Anway, wait and see what happens on the private leaderboard when the contest ends.
+## Kaggleコンテスト終わってから、プライベートリーダーボードはどうなるかなを楽しみに。
 
 ---
 
-# Well, wait and see what happens on the private leaderboard.
-## プライベートリーダーボードで何が起こるのを待つ事がお楽しみに。
-
----
-
-# Anyway, I think it was a good first experience with Kaggle.
-## 私の最初のKaggleの経験は良かったと思います。
-
----
-
-# To close, a response to the "why 1.0?" question, "Perhaps it's not such a prickly problem after all."
-## 「なぜ1.0」に対応のコメントは「おそらく空中サボテンの同定はそなに難しくない問題ではない。」
+## To close, a comment to "why 1.0?", "Perhaps it's not such a prickly problem."
+## 「なぜ1.0」に対応のコメントは「おそらく空中サボテンの同定の問題はそなに難しくない。」
 
 <img src={require("file-loader!./assets/not-prickly-problem.png")} />
+
+---
+
+# I think it was a good first experience with Kaggle.
+## 私の最初のKaggleの経験は良かったと思います。
 
 ---
 # That’s all. Thanks for listening.

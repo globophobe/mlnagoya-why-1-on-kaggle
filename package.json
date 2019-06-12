@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start": "mdx-deck presentation.mdx"
+    "start": "mdx-deck presentation.mdx",
+    "build": "mdx-deck build -d docs presentation.mdx"
   },
   "devDependencies": {
     "file-loader": "^4.0.0",
