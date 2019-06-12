@@ -1,5 +1,5 @@
-import { SplitRight } from 'mdx-deck/layouts'
-import { aspect } from 'mdx-deck/themes'
+import { SplitRight } from '@mdx-deck/layouts'
+import { aspect } from '@mdx-deck/themes'
 import highlight from '@mdx-deck/themes/syntax-highlighter-prism'
 
 export const themes = [ aspect, highlight ]
@@ -196,6 +196,13 @@ epoch  train_loss  valid_loss  accuracy_t  fbeta
 
 ---
 
+# Another comment, "Perhaps it's not such a prickly problem."
+## もう一つのコメントは「おそらく空中サボテンの同定の問題はあまり難しくない。」
+
+<img src={require("file-loader!./assets/not-prickly-problem.png")} />
+
+---
+
 # In any case, I added my name to the leaderboard.
 ## リーダーボードに自分の名前を追加しました。
 
@@ -203,13 +210,8 @@ epoch  train_loss  valid_loss  accuracy_t  fbeta
 
 ---
 
-# I think maybe many 1.0 scores using Fast.ai were based on a freeCodeCamp article.
-## Fast.aiを使った多くの1.0スコアが多分freeCodeCampの記事に基づいていたと思います。
-
----
-
-# Because the 1.0 scores had the same data augmentation parameters.
-## 1.0のスコアのデータ増強のパラメータは同じでしたから。
+# Unexpectedly, the 1.0 scores had the same data augmentation parameters.
+## 意外と、1.0のスコアのデータ増強のパラメータは同じでした。
 ---
 
 # 1.0 public kernel augmentation:
@@ -225,7 +227,7 @@ transformations = get_transforms(
 
 ---
 
-# Except for one parameter, they are all default parameters.
+# Except for one parameter, those are all default parameters.
 ## 1つを除いて、すべてのパラメータはFast.aiのデフォルトのパラメータです。
 
 ---
@@ -234,8 +236,13 @@ transformations = get_transforms(
 ## これだけで十分です。
 
 ```python
-transformations = get_transforms(do_flip=True)    
+transformations = get_transforms(flip_vert=True)    
 ```
+
+---
+
+# flip_vert defaults to False, because not all images are location invariant.
+## すべての画像は逆さになるのは可能ではないので、flip_vertのデフォルトはFalseです。 
 
 ---
 
@@ -244,20 +251,19 @@ transformations = get_transforms(do_flip=True)
 
 ---
 
-# The solution for 1.0 was to correct imbalanced classes.
+<SplitRight>
+
+<img src={require("file-loader!./assets/imbalanced-classes.png")} />
+
+# For 1.0 correct imbalanced classes.
 ## 1.0の解決策は、不均衡なクラスを修正することでした。
 
+</SplitRight>
+
 ---
 
-# Anway, wait and see what happens on the private leaderboard when the contest ends.
+# I'm interested to see what happens on the private leaderboard when the contest ends.
 ## Kaggleコンテスト終わってから、プライベートリーダーボードはどうなるかなを楽しみに。
-
----
-
-## To close, a comment to "why 1.0?", "Perhaps it's not such a prickly problem."
-## 「なぜ1.0」に対応のコメントは「おそらく空中サボテンの同定の問題はそなに難しくない。」
-
-<img src={require("file-loader!./assets/not-prickly-problem.png")} />
 
 ---
 

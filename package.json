@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "mdx-deck presentation.mdx",
-    "build": "mdx-deck build -d docs presentation.mdx"
+    "build": "mdx-deck build -d docs --basepath='/why-1-on-kaggle' presentation.mdx"
   },
   "devDependencies": {
     "file-loader": "^4.0.0",
