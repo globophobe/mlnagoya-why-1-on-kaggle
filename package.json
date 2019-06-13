@@ -1,9 +1,11 @@
 {
   "scripts": {
     "start": "mdx-deck presentation.mdx",
-    "build": "mdx-deck build -d docs --basepath='/why-1-on-kaggle' presentation.mdx"
+    "html": "mdx-deck build -d docs --basepath='/why-1-on-kaggle' presentation.mdx",
+    "pdf": "rm -rf dist && mdx-deck-export pdf --width 1280 --height 720 presentation.mdx"
   },
   "devDependencies": {
+    "@mdx-deck/export": "^2.3.2",
     "file-loader": "^4.0.0",
     "mdx-deck": "^2.3.2"
   },
